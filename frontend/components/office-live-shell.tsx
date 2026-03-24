@@ -73,7 +73,7 @@ export function OfficeLiveShell({
         </Link>
       </div>
 
-      <div className="pointer-events-auto absolute right-4 top-4 z-30 rounded-full border border-white/10 bg-[rgba(7,11,17,0.66)] px-4 py-2 text-xs font-semibold tracking-[0.2em] text-white/92 backdrop-blur-sm md:text-sm">
+      <div className="pointer-events-auto absolute right-4 top-4 z-30 border-2 border-white bg-black px-4 py-2 text-xs font-bold tracking-[0.2em] text-white uppercase font-mono md:text-sm">
         {live.floorLabel} / {live.officeTitle}
       </div>
 
@@ -100,15 +100,15 @@ export function OfficeLiveShell({
           <Link
             key={hotspot.agentId}
             href={`/office/${live.officeId}?agent=${hotspot.agentId}`}
-            className={`pointer-events-auto absolute z-30 -translate-x-1/2 -translate-y-1/2 rounded-full border px-3 py-2 text-xs font-semibold shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-sm transition hover:scale-[1.03] ${
+            className={`pointer-events-auto absolute z-30 -translate-x-1/2 -translate-y-1/2 border-2 px-3 py-2 text-xs font-bold uppercase font-mono transition hover:scale-[1.03] ${
               selected
-                ? "border-[rgba(245,163,93,0.72)] bg-[rgba(12,15,22,0.92)] text-white"
-                : "border-white/10 bg-[rgba(10,14,20,0.82)] text-white/88"
+                ? "border-[rgba(245,163,93,0.72)] bg-black text-white"
+                : "border-white bg-black text-white/88"
             }`}
             style={{ left: `${hotspot.left}%`, top: `${hotspot.top}%` }}
           >
             <span className="inline-flex items-center gap-2">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#58d68d]" />
+              <span className="h-2.5 w-2.5 bg-[#58d68d]" />
               {display?.shortLabel ?? hotspot.agentId}
               <span className="hidden text-white/50 md:inline">{progressLabel(task?.percent)}</span>
             </span>
@@ -117,33 +117,33 @@ export function OfficeLiveShell({
       })}
 
       {selectedAgent && selectedDisplay ? (
-        <aside className="pointer-events-auto absolute bottom-4 right-4 z-30 w-[min(410px,calc(100vw-2rem))] rounded-[28px] border border-white/10 bg-[rgba(7,11,17,0.84)] p-5 text-white shadow-[0_28px_90px_rgba(0,0,0,0.48)] backdrop-blur-xl">
+        <aside className="pointer-events-auto absolute bottom-4 right-4 z-30 w-[min(410px,calc(100vw-2rem))] border-2 border-white bg-black p-5 text-white">
           <div className="mb-4 flex items-start justify-between gap-4">
             <div>
-              <p className="text-[11px] font-semibold tracking-[0.2em] text-[var(--opc-signal)]">
+              <p className="text-[11px] font-bold tracking-[0.2em] text-[var(--opc-signal)] uppercase font-mono">
                 AGENT PROFILE
               </p>
-              <h2 className="mt-2 text-2xl font-semibold text-white">
+              <h2 className="mt-2 text-2xl font-black text-white uppercase">
                 {selectedDisplay.displayName}
               </h2>
-              <p className="mt-1 text-sm text-white/70">{selectedDisplay.title}</p>
+              <p className="mt-1 text-sm text-white/70 font-mono uppercase">{selectedDisplay.title}</p>
             </div>
             <Link
               href={`/office/${live.officeId}`}
-              className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-white/70 transition hover:border-white/20 hover:text-white"
+              className="border-2 border-white/50 px-3 py-1.5 text-xs text-white/70 transition hover:border-white hover:text-white uppercase font-mono"
             >
               关闭
             </Link>
           </div>
 
-          <p className="mb-4 text-sm leading-7 text-white/80">{selectedDisplay.tagline}</p>
+          <p className="mb-4 text-sm leading-7 text-white/80 font-mono">{selectedDisplay.tagline}</p>
 
           <div className="mb-4 flex flex-wrap gap-2">
-            <span className="rounded-full border border-[rgba(88,214,141,0.3)] bg-[rgba(88,214,141,0.1)] px-3 py-1 text-xs text-[#7ee2aa]">
+            <span className="border-2 border-[rgba(88,214,141,0.5)] bg-[rgba(88,214,141,0.1)] px-3 py-1 text-xs text-[#7ee2aa] font-mono uppercase">
               {selectedTask ? progressLabel(selectedTask.percent) : "进行中"}
             </span>
             {selectedTask?.dueAt ? (
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+              <span className="border-2 border-white/20 bg-white/5 px-3 py-1 text-xs text-white/70 font-mono uppercase">
                 截止{" "}
                 {new Date(selectedTask.dueAt).toLocaleString("zh-CN", {
                   month: "numeric",
@@ -156,7 +156,7 @@ export function OfficeLiveShell({
             ) : null}
             <Link
               href={`/agent/${selectedAgent.id}`}
-              className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/78 transition hover:border-white/20 hover:text-white"
+              className="border-2 border-white/20 bg-white/5 px-3 py-1 text-xs text-white/78 transition hover:border-white/50 hover:text-white font-mono uppercase"
             >
               完整档案
             </Link>
@@ -164,10 +164,10 @@ export function OfficeLiveShell({
 
           <div className="space-y-4 text-sm">
             <section>
-              <p className="mb-2 text-xs font-semibold tracking-[0.18em] text-white/45">
+              <p className="mb-2 text-xs font-bold tracking-[0.18em] text-white/45 uppercase font-mono">
                 当前任务
               </p>
-              <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white/88">
+              <div className="border border-white/20 bg-white/5 px-4 py-3 text-white/88 font-mono">
                 {selectedTask
                   ? taskTitleCopy[selectedTask.id] ?? selectedTask.title
                   : "当前没有挂起任务"}
@@ -175,14 +175,14 @@ export function OfficeLiveShell({
             </section>
 
             <section>
-              <p className="mb-2 text-xs font-semibold tracking-[0.18em] text-white/45">
+              <p className="mb-2 text-xs font-bold tracking-[0.18em] text-white/45 uppercase font-mono">
                 擅长
               </p>
               <div className="flex flex-wrap gap-2">
                 {selectedDisplay.strengths.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white/82"
+                    className="border border-white/20 bg-white/5 px-3 py-1 text-white/82 font-mono"
                   >
                     {item}
                   </span>
@@ -191,7 +191,7 @@ export function OfficeLiveShell({
             </section>
 
             <section>
-              <p className="mb-2 text-xs font-semibold tracking-[0.18em] text-white/45">
+              <p className="mb-2 text-xs font-bold tracking-[0.18em] text-white/45 uppercase font-mono">
                 Skills
               </p>
               <div className="flex flex-wrap gap-2">
@@ -199,13 +199,13 @@ export function OfficeLiveShell({
                   skills.map((skill) => (
                     <span
                       key={skill.id}
-                      className="rounded-full border border-[rgba(245,163,93,0.18)] bg-[rgba(245,163,93,0.08)] px-3 py-1 text-white/82"
+                      className="border-2 border-[rgba(245,163,93,0.5)] bg-[rgba(245,163,93,0.08)] px-3 py-1 text-white/82 font-mono uppercase"
                     >
                       {humanizeCapabilityId(skill.id)}
                     </span>
                   ))
                 ) : (
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white/55">
+                  <span className="border-2 border-white/20 bg-white/5 px-3 py-1 text-white/55 font-mono uppercase">
                     暂无挂接 skill
                   </span>
                 )}
@@ -213,7 +213,7 @@ export function OfficeLiveShell({
             </section>
 
             <section>
-              <p className="mb-2 text-xs font-semibold tracking-[0.18em] text-white/45">
+              <p className="mb-2 text-xs font-bold tracking-[0.18em] text-white/45 uppercase font-mono">
                 Tools / Plugins
               </p>
               <div className="flex flex-wrap gap-2">
@@ -221,13 +221,13 @@ export function OfficeLiveShell({
                   plugins.map((plugin) => (
                     <span
                       key={plugin.id}
-                      className="rounded-full border border-[rgba(88,166,255,0.2)] bg-[rgba(88,166,255,0.08)] px-3 py-1 text-white/82"
+                      className="border-2 border-[rgba(88,166,255,0.5)] bg-[rgba(88,166,255,0.08)] px-3 py-1 text-white/82 font-mono uppercase"
                     >
                       {humanizeCapabilityId(plugin.id)}
                     </span>
                   ))
                 ) : (
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white/55">
+                  <span className="border-2 border-white/20 bg-white/5 px-3 py-1 text-white/55 font-mono uppercase">
                     暂无挂接工具
                   </span>
                 )}
@@ -235,7 +235,7 @@ export function OfficeLiveShell({
             </section>
 
             <section>
-              <p className="mb-2 text-xs font-semibold tracking-[0.18em] text-white/45">
+              <p className="mb-2 text-xs font-bold tracking-[0.18em] text-white/45 uppercase font-mono">
                 最近产物
               </p>
               <div className="space-y-2">
@@ -243,13 +243,13 @@ export function OfficeLiveShell({
                   outputs.map((artifact) => (
                     <div
                       key={artifact.id}
-                      className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white/82"
+                      className="border-2 border-white/20 bg-white/5 px-4 py-3 text-white/82 font-mono"
                     >
                       {artifactTitleCopy[artifact.id] ?? artifact.title}
                     </div>
                   ))
                 ) : (
-                  <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white/55">
+                  <div className="border-2 border-white/20 bg-white/5 px-4 py-3 text-white/55 font-mono">
                     这位 agent 当前还没有挂出公开产物。
                   </div>
                 )}
@@ -257,7 +257,7 @@ export function OfficeLiveShell({
             </section>
 
             <section>
-              <p className="mb-2 text-xs font-semibold tracking-[0.18em] text-white/45">
+              <p className="mb-2 text-xs font-bold tracking-[0.18em] text-white/45 uppercase font-mono">
                 Collaborators
               </p>
               <div className="flex flex-wrap gap-2">
@@ -267,14 +267,14 @@ export function OfficeLiveShell({
                     return (
                       <span
                         key={agent.id}
-                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white/72"
+                        className="border-2 border-white/20 bg-white/5 px-3 py-1 text-white/72 font-mono uppercase"
                       >
                         {collaborator?.displayName ?? agent.name}
                       </span>
                     );
                   })
                 ) : (
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white/55">
+                  <span className="border-2 border-white/20 bg-white/5 px-3 py-1 text-white/55 font-mono uppercase">
                     当前没有显式协作者
                   </span>
                 )}

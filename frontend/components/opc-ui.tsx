@@ -152,14 +152,13 @@ export function PageShell({
   return (
     <div className="grid min-h-full w-full gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
       <div className="space-y-6">
-        <section className="opc-surface relative overflow-hidden rounded-[30px] p-6 md:p-8">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-[radial-gradient(circle_at_top_left,rgba(245,163,93,0.22),transparent_45%),radial-gradient(circle_at_top_right,rgba(88,166,255,0.18),transparent_45%)]" />
+        <section className="opc-surface relative overflow-hidden border-2 border-white bg-black p-6 md:p-8">
           <div className="relative flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="space-y-3">
-              <p className="opc-kicker">{eyebrow}</p>
+              <p className="opc-kicker border-b-2 border-white pb-2">{eyebrow}</p>
               <div className="space-y-3">
-                <h2 className="opc-title text-3xl font-semibold text-white md:text-5xl">{title}</h2>
-                <p className="max-w-4xl text-sm leading-7 text-[var(--opc-muted)] md:text-base">
+                <h2 className="opc-title text-3xl font-black text-white uppercase md:text-5xl">{title}</h2>
+                <p className="max-w-4xl text-sm leading-7 text-white font-mono md:text-base">
                   {description}
                 </p>
               </div>
@@ -183,13 +182,13 @@ export function SectionCard({
   className,
 }: SectionCardProps) {
   return (
-    <section className={`opc-surface rounded-[24px] p-5 md:p-6 ${className ?? ""}`.trim()}>
-      <div className="mb-5 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+    <section className={`opc-surface border-2 border-white bg-black p-5 md:p-6 ${className ?? ""}`.trim()}>
+      <div className="mb-5 flex flex-col gap-3 border-b-2 border-white pb-4 lg:flex-row lg:items-start lg:justify-between">
         <div className="space-y-2">
           {kicker ? <p className="opc-kicker">{kicker}</p> : null}
-          <h3 className="opc-title text-xl font-semibold text-white">{title}</h3>
+          <h3 className="opc-title text-xl font-black text-white uppercase">{title}</h3>
           {description ? (
-            <p className="max-w-3xl text-sm leading-7 text-[var(--opc-muted)]">{description}</p>
+            <p className="max-w-3xl text-sm leading-7 text-white font-mono">{description}</p>
           ) : null}
         </div>
         {actions ? <div className="flex flex-wrap items-center gap-3">{actions}</div> : null}

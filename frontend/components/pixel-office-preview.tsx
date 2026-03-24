@@ -3,6 +3,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import type { LiveOfficeConfig } from "@/lib/live-offices";
+import { ScrambleText } from "./scramble-text";
 
 type PreviewAgent = {
   src: string;
@@ -162,6 +163,7 @@ export function PixelOfficePreview({
   ctaLabel,
   metrics = [],
   className = "",
+  disableScramble = false,
 }: {
   config: LiveOfficeConfig;
   title: string;
@@ -169,13 +171,14 @@ export function PixelOfficePreview({
   ctaLabel?: string;
   metrics?: Metric[];
   className?: string;
+  disableScramble?: boolean;
 }) {
   const variant = variants[config.previewVariant];
   const previewSrc = `/star-office/previews/${config.officeId}.webp`;
 
   return (
     <div
-      className={`relative overflow-hidden rounded-[34px] border border-white/10 bg-[#111722] shadow-[0_28px_80px_rgba(0,0,0,0.24)] ${className}`}
+      className={`relative overflow-hidden border-2 border-white bg-black opc-room-card ${className}`}
     >
       <div
         className="absolute inset-y-0 left-0 w-1.5"
@@ -214,25 +217,23 @@ export function PixelOfficePreview({
       <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-3 p-4">
         <div className="flex flex-wrap items-center gap-2">
           <div
-            className="rounded-full border px-3 py-1.5 text-xs font-semibold tracking-[0.12em] text-white/92 backdrop-blur-sm"
+            className="border-2 px-2 py-1 text-xs font-bold tracking-[0.12em] text-white font-mono uppercase bg-black"
             style={{
-              borderColor: `${variant.accent}66`,
-              background: "rgba(6,10,16,0.54)",
-              boxShadow: `0 0 0 1px ${variant.accent}22 inset`,
+              borderColor: variant.accent,
             }}
           >
-            {title}
+            <ScrambleText text={title} revealDuration={800} delay={100} disabled={disableScramble} />
           </div>
           {subtitle ? (
-            <div className="rounded-full border border-white/10 bg-[rgba(6,10,16,0.42)] px-3 py-1.5 text-[11px] text-white/72 backdrop-blur-sm">
-              {subtitle}
+            <div className="border-2 border-white bg-black px-2 py-1 text-xs text-white font-mono uppercase">
+              <ScrambleText text={subtitle} revealDuration={600} delay={300} disabled={disableScramble} />
             </div>
           ) : null}
         </div>
 
         {ctaLabel ? (
-          <div className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-[rgba(6,10,16,0.44)] px-3 py-1.5 text-xs font-semibold text-white/88 backdrop-blur-sm">
-            {ctaLabel}
+          <div className="inline-flex items-center gap-1 border-2 border-white bg-black px-2 py-1 text-xs font-bold text-white font-mono uppercase">
+            <ScrambleText text={ctaLabel} revealDuration={500} delay={500} disabled={disableScramble} />
             <ArrowUpRight className="h-3.5 w-3.5" />
           </div>
         ) : null}
@@ -240,21 +241,21 @@ export function PixelOfficePreview({
 
       {metrics.length ? (
         <div className="absolute inset-x-4 bottom-16 flex flex-wrap gap-2">
-          {metrics.map((item) => (
+          {metrics.map((item, i) => (
             <div
               key={`${config.officeId}-${item.label}`}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[rgba(6,10,16,0.54)] px-3 py-2 text-[11px] text-white/82 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 border-2 border-white bg-black px-2 py-1 text-xs text-white font-mono uppercase"
             >
               <span className="text-[var(--opc-signal)]">{item.icon}</span>
-              <span>{item.label}</span>
+              <ScrambleText text={item.label} revealDuration={600} delay={600 + i * 150} disabled={disableScramble} />
             </div>
           ))}
         </div>
       ) : null}
 
       <div className="absolute bottom-4 left-4">
-        <div className="rounded-full border border-white/10 bg-[rgba(6,10,16,0.54)] px-4 py-2 text-sm text-white/86 backdrop-blur-sm">
-          {config.officeTitle}
+        <div className="border-2 border-white bg-black px-2 py-1 text-xs text-white font-mono uppercase text-[var(--opc-signal)]">
+          <ScrambleText text={`SYS.NO.${config.officeId.toUpperCase()} / ${config.officeTitle}`} revealDuration={1200} delay={0} disabled={disableScramble} />
         </div>
       </div>
     </div>

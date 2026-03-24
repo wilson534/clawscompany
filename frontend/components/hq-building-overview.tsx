@@ -10,13 +10,13 @@ export function HqBuildingOverview() {
   const splitFloors = liveFloors.filter((floor) => floor.officeIds.length > 1).length;
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,#1a2533_0%,#101720_44%,#090e14_100%)] px-3 py-3 md:px-4">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,#1a2533_0%,#000000_44%,#000000_100%)] px-3 py-3 md:px-4">
       <div className="mb-4 flex flex-col gap-3">
         <div className="flex items-center justify-between gap-3">
-          <div className="rounded-full border border-white/10 bg-[rgba(7,11,17,0.56)] px-4 py-2 text-sm font-semibold tracking-[0.18em] text-white/92 backdrop-blur-sm">
+          <div className="border-2 border-white bg-black px-4 py-2 text-sm font-bold tracking-[0.18em] text-white font-mono uppercase">
             OPC HQ
           </div>
-          <div className="rounded-full border border-white/10 bg-[rgba(7,11,17,0.56)] px-4 py-2 text-xs text-white/74 backdrop-blur-sm md:text-sm">
+          <div className="border-2 border-white bg-black px-4 py-2 text-xs text-white uppercase font-mono md:text-sm">
             总览 -&gt; 楼层 -&gt; 办公室
           </div>
         </div>
@@ -62,7 +62,7 @@ export function HqBuildingOverview() {
                       label: `${floorAgents} 位 Agent`,
                     },
                   ]}
-                  className="min-h-[36svh] transition-transform duration-150 group-hover:-translate-y-1 md:min-h-[42svh]"
+                  className="min-h-[36svh] transition-transform duration-150 md:min-h-[42svh]"
                 />
               </Link>
             );
