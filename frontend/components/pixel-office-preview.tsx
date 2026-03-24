@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
+import { ArrowUpRight } from "lucide-react";
 import type { LiveOfficeConfig } from "@/lib/live-offices";
 
 type PreviewAgent = {
@@ -17,6 +18,11 @@ type PreviewVariant = {
   tint: string;
   imagePosition: string;
   agents: PreviewAgent[];
+};
+
+type Metric = {
+  icon: ReactNode;
+  label: string;
 };
 
 const asset = (name: string) => `/star-office/assets/${name}`;
@@ -154,12 +160,14 @@ export function PixelOfficePreview({
   title,
   subtitle,
   ctaLabel,
+  metrics = [],
   className = "",
 }: {
   config: LiveOfficeConfig;
   title: string;
   subtitle?: string;
   ctaLabel?: string;
+  metrics?: Metric[];
   className?: string;
 }) {
   const variant = variants[config.previewVariant];
@@ -169,6 +177,11 @@ export function PixelOfficePreview({
     <div
       className={`relative overflow-hidden rounded-[34px] border border-white/10 bg-[#111722] shadow-[0_28px_80px_rgba(0,0,0,0.24)] ${className}`}
     >
+      <div
+        className="absolute inset-y-0 left-0 w-1.5"
+        style={{ background: `linear-gradient(180deg, ${variant.accent}, transparent 78%)` }}
+      />
+
       <img
         src={previewSrc}
         alt=""
@@ -178,7 +191,7 @@ export function PixelOfficePreview({
       />
       <div className="absolute inset-0" style={{ backgroundImage: variant.glow }} />
       <div className="absolute inset-0" style={{ backgroundImage: variant.tint }} />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,10,16,0.04),rgba(6,10,16,0.14)_58%,rgba(6,10,16,0.38))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,10,16,0.02),rgba(6,10,16,0.1)_52%,rgba(6,10,16,0.34))]" />
 
       {variant.agents.map((agent, index) => (
         <div
@@ -201,10 +214,10 @@ export function PixelOfficePreview({
       <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-3 p-4">
         <div className="flex flex-wrap items-center gap-2">
           <div
-            className="rounded-full border px-3 py-1.5 text-xs font-semibold tracking-[0.18em] text-white/92 backdrop-blur-sm"
+            className="rounded-full border px-3 py-1.5 text-xs font-semibold tracking-[0.12em] text-white/92 backdrop-blur-sm"
             style={{
               borderColor: `${variant.accent}66`,
-              background: "rgba(6,10,16,0.48)",
+              background: "rgba(6,10,16,0.54)",
               boxShadow: `0 0 0 1px ${variant.accent}22 inset`,
             }}
           >
@@ -218,14 +231,29 @@ export function PixelOfficePreview({
         </div>
 
         {ctaLabel ? (
-          <div className="rounded-full border border-white/10 bg-[rgba(6,10,16,0.44)] px-3 py-1.5 text-xs font-semibold text-white/88 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-[rgba(6,10,16,0.44)] px-3 py-1.5 text-xs font-semibold text-white/88 backdrop-blur-sm">
             {ctaLabel}
+            <ArrowUpRight className="h-3.5 w-3.5" />
           </div>
         ) : null}
       </div>
 
+      {metrics.length ? (
+        <div className="absolute inset-x-4 bottom-16 flex flex-wrap gap-2">
+          {metrics.map((item) => (
+            <div
+              key={`${config.officeId}-${item.label}`}
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[rgba(6,10,16,0.54)] px-3 py-2 text-[11px] text-white/82 backdrop-blur-sm"
+            >
+              <span className="text-[var(--opc-signal)]">{item.icon}</span>
+              <span>{item.label}</span>
+            </div>
+          ))}
+        </div>
+      ) : null}
+
       <div className="absolute bottom-4 left-4">
-        <div className="rounded-full border border-white/10 bg-[rgba(6,10,16,0.48)] px-4 py-2 text-sm text-white/86 backdrop-blur-sm">
+        <div className="rounded-full border border-white/10 bg-[rgba(6,10,16,0.54)] px-4 py-2 text-sm text-white/86 backdrop-blur-sm">
           {config.officeTitle}
         </div>
       </div>

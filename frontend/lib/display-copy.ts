@@ -16,44 +16,44 @@ type AgentDisplayCopy = {
 
 export const officeDisplayCopy: Record<OfficeId, OfficeDisplayCopy> = {
   founder: {
-    name: "Founder 办公室",
+    name: "Founder Office",
     floorTitle: "10F / Founder",
-    hint: "点击房间里的 agent，可以查看当前决策、任务和能力。",
+    hint: "这里负责全局拍板、风险汇总和跨办公室优先级调整。",
   },
   team: {
     name: "Team Office",
     floorTitle: "9F / Team",
-    hint: "这里是团队上下文注入层，四位成员的长板和分工会回灌给整家公司。",
+    hint: "这里负责把团队长板、分工和上下文注入系统，让整家公司按你们的优势运行。",
   },
   partner: {
     name: "外交部",
     floorTitle: "8F / Partner",
-    hint: "这里负责媒体、渠道和合作线索的筛选与推进。",
+    hint: "这里负责媒体、渠道和合作线索的筛选、推进与回流。",
   },
   intel: {
     name: "情报部",
     floorTitle: "7F / Intel",
-    hint: "这里负责从 GitHub、X、小红书和论文里抓机会信号。",
+    hint: "这里负责从 GitHub、小红书、X 和论文里持续扫描高价值信号。",
   },
   investment: {
     name: "产品投资部",
     floorTitle: "6F / Investment",
-    hint: "这里负责机会评分、立项判断和优先级拍板前的委员会评估。",
+    hint: "这里负责机会打分、立项判断和优先级拍板前的委员会评估。",
   },
   design: {
     name: "设计部",
     floorTitle: "5F / Design",
-    hint: "这里负责把产品叙事落成界面语言、像素场景和 iOS 视觉气质。",
+    hint: "这里负责把产品叙事真正落成界面语言、视觉系统和演示质感。",
   },
   engineering: {
     name: "工程部",
     floorTitle: "4F / Engineering",
-    hint: "这里负责把 HQ、A2A 协作层和主流程真正做出来。",
+    hint: "这里负责把 HQ、A2A 协作和主流程真正做出来并持续联调。",
   },
   qa: {
     name: "QA 部",
     floorTitle: "3F / QA",
-    hint: "这里负责集成验证、质量闸门和风险拦截。",
+    hint: "这里负责集成验收、风险拦截和发布前质量门。",
   },
   release: {
     name: "发行部",
@@ -72,14 +72,14 @@ export const agentDisplayCopy: Record<string, AgentDisplayCopy> = {
     shortLabel: "EM",
     displayName: "EM-01",
     title: "Founder Agent",
-    tagline: "负责全局拍板、优先级调整和关键风险汇总。",
+    tagline: "负责全局拍板、经营节奏和关键风险总线。",
     strengths: ["战略拍板", "经营视角", "Founder 叙事"],
   },
   "team-peng": {
     shortLabel: "彭",
     displayName: "彭智炜",
     title: "Product Narrative Lead",
-    tagline: "负责把项目讲成评委一眼能懂的一人公司故事。",
+    tagline: "负责把项目讲成评委第一眼就能懂的一人公司故事。",
     strengths: ["产品叙事", "传播包装", "路演表达"],
   },
   "team-zhang": {
@@ -100,7 +100,7 @@ export const agentDisplayCopy: Record<string, AgentDisplayCopy> = {
     shortLabel: "石",
     displayName: "石千山",
     title: "Platform Engineer",
-    tagline: "负责状态层、协作层和可观测性真正焊到前端里。",
+    tagline: "负责把状态层、协作层和可观测性真正焊进前端里。",
     strengths: ["平台工程", "协作系统", "可观测性"],
   },
   "partner-scout": {
@@ -135,8 +135,8 @@ export const agentDisplayCopy: Record<string, AgentDisplayCopy> = {
     shortLabel: "PM",
     displayName: "PM / Investment Lead",
     title: "Opportunity Committee Lead",
-    tagline: "负责评分、立项和 ROI 判断，不是每个热点都值得做。",
-    strengths: ["立项评估", "ROI 判断", "委员会审查"],
+    tagline: "负责评分、立项和 ROI 判断，不是每一个热点都值得做。",
+    strengths: ["立项评估", "ROI 判断", "委员会审核"],
   },
   "design-director": {
     shortLabel: "De",

@@ -26,3 +26,6 @@ frontend/__enc_test.txt
 .idea/
 .vscode/
 Thumbs.db
+
+# Python 缓存
+scripts/__pycache__/

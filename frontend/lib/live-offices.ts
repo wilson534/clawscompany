@@ -170,7 +170,7 @@ export const liveOffices: LiveOfficeConfig[] = [
     sourceOfficeId: "founder",
     floor: 10,
     floorLabel: "10F",
-    floorTitle: "Founder",
+    floorTitle: "Founder Office",
     officeTitle: "Founder Office / Command Deck",
     previewVariant: "founder-command",
     port: 19110,
@@ -183,7 +183,7 @@ export const liveFloors: LiveFloorConfig[] = [
     floor: 10,
     floorLabel: "10F",
     departmentId: "founder",
-    floorTitle: "Founder",
+    floorTitle: "Founder Office",
     officeIds: ["founder"],
     previewOfficeId: "founder",
   },
@@ -262,23 +262,13 @@ export const liveFloors: LiveFloorConfig[] = [
 ];
 
 export function getLiveOfficeByOfficeId(officeId: string) {
-  return liveOffices.find((item) => item.officeId === officeId);
-}
-
-export function getLiveOfficesByFloor(floor: number | string) {
-  return liveOffices.filter((item) => String(item.floor) === String(floor));
+  return liveOffices.find((office) => office.officeId === officeId);
 }
 
 export function getLiveFloorByFloor(floor: number | string) {
   return liveFloors.find((item) => String(item.floor) === String(floor));
 }
 
-export function getPreviewOfficeByFloor(floor: number | string) {
-  const floorConfig = getLiveFloorByFloor(floor);
-  return floorConfig ? getLiveOfficeByOfficeId(floorConfig.previewOfficeId) : undefined;
-}
-
-export function getLiveUrlByOfficeId(officeId: string) {
-  const config = getLiveOfficeByOfficeId(officeId);
-  return config ? `http://127.0.0.1:${config.port}` : null;
+export function getLiveOfficesByFloor(floor: number | string) {
+  return liveOffices.filter((office) => String(office.floor) === String(floor));
 }

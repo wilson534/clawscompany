@@ -5,10 +5,12 @@ import { getLiveOfficeByOfficeId } from "@/lib/live-offices";
 
 type PageProps = {
   params: Promise<{ officeId: string }>;
+  searchParams: Promise<{ agent?: string }>;
 };
 
-export default async function OfficePage({ params }: PageProps) {
+export default async function OfficePage({ params, searchParams }: PageProps) {
   const { officeId } = await params;
+  const { agent } = await searchParams;
   const live = getLiveOfficeByOfficeId(officeId);
   const office = live ? getOfficeById(live.sourceOfficeId) : undefined;
 
@@ -16,5 +18,5 @@ export default async function OfficePage({ params }: PageProps) {
     notFound();
   }
 
-  return <OfficeLiveShell live={live} />;
+  return <OfficeLiveShell live={live} selectedAgentId={agent} />;
 }
