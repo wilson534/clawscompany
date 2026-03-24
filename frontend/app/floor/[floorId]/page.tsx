@@ -25,10 +25,10 @@ export default async function FloorPage({ params }: PageProps) {
   const agentCount = offices.reduce((sum, office) => sum + office.agentIds.length, 0);
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,#182231_0%,#0f1620_42%,#090e14_100%)] px-3 py-3 md:px-4">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,#182231_0%,#000000_42%,#000000_100%)] px-3 py-3 md:px-4">
       <div className="mb-4 flex flex-col gap-3">
         <div className="flex items-center justify-between gap-3">
-          <div className="rounded-full border border-white/10 bg-[rgba(7,11,17,0.56)] px-4 py-2 text-sm font-semibold tracking-[0.18em] text-white/92 backdrop-blur-sm">
+          <div className="border-2 border-white bg-black px-4 py-2 text-sm font-bold tracking-[0.18em] text-white font-mono uppercase">
             {floor.floorLabel} / {floor.floorTitle}
           </div>
 
@@ -40,6 +40,7 @@ export default async function FloorPage({ params }: PageProps) {
         </div>
 
         <SignalStrip
+          disableScramble={true}
           items={[
             makeHudItem(departmentIcon(floor.departmentId), "部门", floor.floorTitle),
             makeHudItem(sharedHudIcons.offices(), "办公室", `${offices.length} 间`),
@@ -53,6 +54,7 @@ export default async function FloorPage({ params }: PageProps) {
         {offices.map((office) => (
           <Link key={office.officeId} href={`/office/${office.officeId}`} className="group block">
             <PixelOfficePreview
+              disableScramble={true}
               config={office}
               title={office.officeTitle}
               subtitle={splitLayout ? floor.floorTitle : "点击进入对应办公室 live"}

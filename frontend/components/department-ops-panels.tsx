@@ -234,25 +234,20 @@ export function DepartmentOpsPanel({ officeId }: { officeId: string }) {
 
   return (
     <aside
-      className="pointer-events-auto absolute bottom-16 left-4 z-30 w-[min(390px,calc(100vw-2rem))] rounded-[28px] border bg-[rgba(7,11,17,0.78)] p-5 text-white shadow-[0_28px_90px_rgba(0,0,0,0.46)] backdrop-blur-xl"
-      style={{
-        borderColor: `${config.accent}55`,
-        boxShadow: `0 0 0 1px ${config.accent}22 inset, 0 28px 90px rgba(0,0,0,0.46)`,
-      }}
+      className="pointer-events-auto absolute bottom-16 left-4 z-30 w-[min(390px,calc(100vw-2rem))] border-2 border-white bg-black p-5 text-white"
     >
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex items-start justify-between gap-4 border-b-2 border-white pb-4 mb-4">
         <div>
-          <p className="text-[11px] font-semibold tracking-[0.22em]" style={{ color: config.accent }}>
+          <p className="text-[11px] font-bold tracking-[0.22em] font-mono uppercase" style={{ color: config.accent }}>
             {config.eyebrow}
           </p>
-          <h2 className="mt-2 text-xl font-semibold text-white">{config.title}</h2>
-          <p className="mt-2 text-sm leading-7 text-white/74">{config.description}</p>
+          <h2 className="mt-2 text-xl font-black text-white uppercase">{config.title}</h2>
+          <p className="mt-2 text-sm leading-7 text-white/80 font-mono">{config.description}</p>
         </div>
         <div
-          className="rounded-full border px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em]"
+          className="border-2 px-3 py-1.5 text-[11px] font-bold tracking-[0.18em] uppercase font-mono bg-black"
           style={{
-            borderColor: `${config.accent}44`,
-            background: `${config.accent}12`,
+            borderColor: config.accent,
             color: config.accent,
           }}
         >
@@ -269,14 +264,13 @@ export function DepartmentOpsPanel({ officeId }: { officeId: string }) {
       </div>
 
       <div
-        className="mt-4 rounded-2xl border px-4 py-3"
+        className="mt-4 border-2 px-4 py-3 bg-black"
         style={{
-          borderColor: `${config.accent}33`,
-          background: `linear-gradient(180deg, ${config.accent}0D, rgba(255,255,255,0.02))`,
+          borderColor: "var(--opc-line)",
         }}
       >
-        <p className="text-[11px] font-semibold tracking-[0.18em] text-white/48">当前动作</p>
-        <p className="mt-2 text-sm leading-7 text-white/86">{config.currentMove}</p>
+        <p className="text-[11px] font-bold tracking-[0.18em] text-[var(--opc-signal)] uppercase font-mono">当前动作</p>
+        <p className="mt-2 text-sm leading-7 text-white/90 font-mono">{config.currentMove}</p>
       </div>
     </aside>
   );

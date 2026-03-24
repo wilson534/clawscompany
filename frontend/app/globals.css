@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --opc-ink: #0a0f15;
-  --opc-panel: rgba(17, 26, 36, 0.88);
-  --opc-cream: #f2eadb;
-  --opc-muted: #97a8b6;
-  --opc-line: rgba(255, 255, 255, 0.12);
+  --opc-ink: #000000;
+  --opc-panel: #000000;
+  --opc-cream: #FFFFFF;
+  --opc-muted: #888888;
+  --opc-line: #FFFFFF;
   --opc-blue: #58a6ff;
-  --opc-signal: #f5a35d;
+  --opc-signal: #FF4D00;
   --opc-green: #52d48a;
   --opc-red: #ff6b6b;
   --opc-yellow: #f4cf66;
@@ -22,9 +22,9 @@
   --opc-room-release: #273127;
   --opc-room-growth: #2d281d;
   --opc-room-partner: #202734;
-  --font-display: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
-  --font-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --font-mono: "IBM Plex Mono", "Cascadia Mono", "Consolas", monospace;
+  --font-display: "Archivo Black", "Arial Black", "Impact", sans-serif;
+  --font-body: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-mono: "Space Mono", "IBM Plex Mono", "Cascadia Mono", monospace;
 }
 
 @theme inline {
@@ -47,9 +47,9 @@ body {
   background:
     radial-gradient(circle at top left, rgba(88, 166, 255, 0.14), transparent 24%),
     radial-gradient(circle at top right, rgba(245, 163, 93, 0.12), transparent 22%),
-    linear-gradient(180deg, #0b1118 0%, #0a0f15 55%, #091119 100%);
+    linear-gradient(180deg, #0b1118 0%, #000000 55%, #000000 100%);
   color: var(--opc-cream);
-  font-family: var(--font-body), "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: var(--font-body);
 }
 
 a {
@@ -65,54 +65,58 @@ pre {
 
 .opc-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
   background-size: 32px 32px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 90%);
+  opacity: 0.1;
 }
 
 .opc-nav-chip {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  padding: 0.5rem 0.9rem;
-  background: rgba(255, 255, 255, 0.04);
-  font-family: var(--font-display), sans-serif;
+  border: 2px solid var(--opc-line);
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+  background: var(--opc-ink);
+  font-family: var(--font-display);
   font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  transition: 150ms ease;
+  transition: transform 150ms ease, background 150ms ease, color 150ms ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .opc-nav-chip:hover {
-  border-color: rgba(88, 166, 255, 0.45);
-  background: rgba(88, 166, 255, 0.1);
-  color: white;
+  background: var(--opc-signal);
+  border-color: var(--opc-signal);
+  color: var(--opc-ink);
+  transform: translateX(4px);
 }
 
 .opc-surface {
-  border: 1px solid var(--opc-line);
-  background: linear-gradient(180deg, rgba(17, 26, 36, 0.94), rgba(10, 16, 24, 0.96));
-  box-shadow:
-    0 18px 40px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border: 2px solid var(--opc-line);
+  background: var(--opc-ink);
+  border-radius: 0;
 }
 
 .opc-room {
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 10px 20px rgba(0, 0, 0, 0.25);
+  border: 2px solid var(--opc-line);
+  border-radius: 0;
+  background: var(--opc-ink);
 }
 
 .opc-room-card {
-  backdrop-filter: blur(10px);
-  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  border-radius: 0;
+  border: 2px solid var(--opc-line);
+  background: var(--opc-ink);
+  transition: transform 150ms ease, border-color 150ms ease;
 }
 
 .opc-room-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.28);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.38);
+  transform: translate(4px, -4px);
+  border-color: var(--opc-signal);
+  box-shadow: -4px 4px 0 var(--opc-signal);
 }
 
 .opc-preview-sprite {
@@ -127,67 +131,73 @@ pre {
 }
 
 .opc-metric-card {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.04);
+  border: 2px solid var(--opc-line);
+  border-radius: 0;
+  background: var(--opc-ink);
   padding: 1rem;
 }
 
 .opc-kicker {
   color: var(--opc-signal);
-  font-family: var(--font-display), sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.24em;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
+  font-weight: 900;
 }
 
 .opc-title {
-  font-family: var(--font-display), sans-serif;
-  letter-spacing: 0.03em;
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 0.9;
 }
 
 .opc-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  padding: 0.3rem 0.7rem;
+  border: 2px solid var(--opc-line);
+  border-radius: 0;
+  padding: 0.25rem 0.75rem;
   font-size: 0.75rem;
+  font-family: var(--font-mono);
   color: var(--opc-cream);
-  background: rgba(255, 255, 255, 0.05);
+  background: transparent;
+  text-transform: uppercase;
 }
 
 .opc-badge::before {
   content: "";
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 999px;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 0;
   background: currentColor;
-  opacity: 0.9;
 }
 
 .opc-json {
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(7, 12, 18, 0.86);
-  color: #d7f7e4;
-  font-family: var(--font-mono), monospace;
+  border-radius: 0;
+  border: 2px solid var(--opc-line);
+  background: var(--opc-ink);
+  color: var(--opc-signal);
+  font-family: var(--font-mono);
   font-size: 0.78rem;
   line-height: 1.65;
   padding: 1rem;
 }
 
 .opc-log-row + .opc-log-row {
-  margin-top: 0.65rem;
+  margin-top: 0;
+  border-top: none;
 }
 
 .opc-log-row {
-  border-radius: 0.9rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.04);
+  border-radius: 0;
+  border: 2px solid var(--opc-line);
+  background: var(--opc-ink);
   padding: 0.9rem;
 }
+
 
 .opc-flight-line {
   stroke-width: 2.5;
@@ -456,4 +466,52 @@ pre {
   50% {
     transform: translateY(-4px);
   }
+}
+/* CRT & Glitch Effects */
+.crt-scanlines {
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%),
+              linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.04));
+  background-size: 100% 4px, 12px 100%;
+}
+
+.crt-vignette {
+  background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+@keyframes glitch-image {
+  0% { transform: translate(0); filter: none; }
+  10% { transform: translate(-4px, 2px); filter: contrast(1.5) saturate(2) hue-rotate(90deg); }
+  20% { transform: translate(4px, -2px); filter: invert(0.2) drop-shadow(4px 0 0 red) drop-shadow(-4px 0 0 cyan); }
+  30% { transform: translate(0); filter: none; }
+  100% { transform: translate(0); filter: none; }
+}
+
+.group:hover .hover-glitch {
+  animation: glitch-image 0.25s ease-out forwards;
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.95; }
+  5% { opacity: 0.8; }
+  10% { opacity: 0.95; }
+  50% { opacity: 0.95; }
+  52% { opacity: 0.85; }
+  54% { opacity: 0.95; }
+  100% { opacity: 0.95; }
+}
+
+.crt-flicker {
+  animation: crt-flicker 6s infinite;
+}
+
+@keyframes glitch-text {
+  0% { text-shadow: none; transform: translate(0); }
+  20% { text-shadow: 2px 0 var(--opc-signal), -2px 0 cyan; transform: translate(-1px, 1px); }
+  40% { text-shadow: -2px 0 var(--opc-signal), 2px 0 cyan; transform: translate(1px, -1px); }
+  60% { text-shadow: none; transform: translate(0); }
+  100% { text-shadow: none; transform: translate(0); }
+}
+
+.group:hover .text-hover-glitch {
+  animation: glitch-text 0.25s ease-out forwards;
 }
